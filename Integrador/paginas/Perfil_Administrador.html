@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Perfil - Administrador</title>
+    <link rel="stylesheet" href="../estilos/Perfil_Administrador.css">
+    <script src="../js/Perfil_Administrador.js" defer></script>
+</head>
+<body>
+    <button class="boton-hamburguesa" id="boton-menu" aria-label="Abrir menú">
+        <span class="linea-hamburguesa"></span>
+        <span class="linea-hamburguesa"></span>
+        <span class="linea-hamburguesa"></span>
+    </button>
+
+    <div class="overlay-menu" id="overlay-menu"></div>
+
+    <aside class="menu-lateral" id="menu-lateral">
+        <div class="contenedor-logo">
+            <div class="logo-empresa">
+                <img src="../src/Logo_Sin_Fondo.png" alt="Logo AFGCORPORACIÓN" class="imagen-logo">
+            </div>
+            <div class="nombre-empresa">AFGCORPORACIÓN</div>
+        </div>
+        
+        <div class="contenedor-menu">
+            
+            <a href="../paginas/Perfil_Administrador.html" class="item-menu activo">
+                <img src="../src/Perfil.png" alt="Perfil" class="icono-menu">
+                <span>Perfil</span>
+            </a>
+            
+            <a href="../paginas/Control_Usarios.html" class="item-menu">
+                <img src="../src/Contadores.png" alt="Usuarios" class="icono-menu">
+                <span>Control de usuarios</span>
+            </a>
+            
+            <a href="../paginas/Blog_Admin.html" class="item-menu">
+                <img src="../src/Talleres.png" alt="Blog" class="icono-menu">
+                <span>Blog</span>
+            </a>
+            
+            <a href="../paginas/Gestor_Pagos.html" class="item-menu">
+                <img src="../src/Pagos.png" alt="Pagos" class="icono-menu">
+                <span>Gestor de pagos</span>
+            </a>
+            
+            <a href="../paginas/Control_Solicitudes.html" class="item-menu">
+                <img src="../src/Solicitudes.png" alt="Solicitudes" class="icono-menu">
+                <span>Control de solicitudes</span>
+            </a>
+            
+            <a href="../paginas/Historial_Asesorias.html" class="item-menu">
+                <img src="../src/Historial.png" alt="Historial" class="icono-menu">
+                <span>Historial de asesorías</span>
+            </a>
+        </div>
+
+        <a href="#" class="item-menu item-logout" id="logout-button">
+            <img src="../src/Salida.png" alt="Cerrar Sesión" class="icono-menu">
+            <span>Cerrar Sesión</span>
+        </a>
+    </aside>
+
+    <main class="contenido-principal">
+        <div id="mi-notificacion" class="notificacion-banner">
+            <div class="notificacion-contenido">
+                <span class="notificacion-icono">&#10003;</span>
+                <span id="notificacion-mensaje"></span>
+            </div>
+            <span id="notificacion-cerrar" class="notificacion-cerrar">&times;</span>
+        </div>
+
+        <section class="seccion-perfil">
+            <div class="tarjeta-perfil">
+                <div class="contenedor-foto-perfil">
+                    <div class="foto-perfil" id="foto-perfil-click">
+                        <img src="foto-perfil.png" alt="Perfil" class="imagen-perfil" id="imagen-perfil">
+                    </div>
+                    <div class="botones-foto">
+                        <button class="boton-editar-foto" id="btn-editar-foto">
+                            <img src="../src/Editar.png" alt="Editar foto" class="icono-editar-foto">
+                            Cambiar foto
+                        </button>
+                        <button class="boton-eliminar-foto" id="btn-eliminar-foto">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="icono-eliminar-foto">
+                                <polyline points="3 6 5 6 21 6"></polyline>
+                                <path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path>
+                                <line x1="10" y1="11" x2="10" y2="17"></line>
+                                <line x1="14" y1="11" x2="14" y2="17"></line>
+                            </svg>
+                            Eliminar foto
+                        </button>
+                    </div>
+                    <input type="file" id="input-foto" accept="image/*" style="display: none;">
+                </div>
+                
+                <div class="info-basica">
+                    <h3 class="nombre-usuario">Maria García</h3>
+                    <p class="rol-usuario">Administrador</p>
+                    <div class="etiquetas-estado">
+                        <span class="etiqueta etiqueta-activo">Activo</span>
+                        <span class="etiqueta etiqueta-rol">Rol Administrador</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="seccion-estadisticas">
+            <div class="tarjeta-estadistica">
+                <div class="icono-estadistica icono-publicaciones">
+                    <img src="../src/Publicaciones.png" alt="Publicaciones" class="icono-tarjeta">
+                </div>
+                <div class="info-estadistica">
+                    <p class="numero-estadistica">0</p>
+                    <p class="label-estadistica">Publicaciones</p>
+                </div>
+            </div>
+            
+            <div class="tarjeta-estadistica">
+                <div class="icono-estadistica icono-asesorias">
+                    <img src="../src/Asesorias.png" alt="Asesorías" class="icono-tarjeta">
+                </div>
+                <div class="info-estadistica">
+                    <p class="numero-estadistica">0</p>
+                    <p class="label-estadistica">Asesorías</p>
+                </div>
+            </div>
+            
+            <div class="tarjeta-estadistica">
+                <div class="icono-estadistica icono-clientes">
+                    <img src="../src/Clientes.png" alt="Clientes" class="icono-tarjeta">
+                </div>
+                <div class="info-estadistica">
+                    <p class="numero-estadistica">0</p>
+                    <p class="label-estadistica">Clientes</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="seccion-informacion">
+            <div class="columna-info">
+                <div class="encabezado-columna">
+                    <h3 class="titulo-columna">Datos Personales</h3>
+                    <button class="boton-editar" id="btn-editar-datos-personales">
+                        <img src="../src/Editar.png" alt="Editar" class="icono-editar-btn">
+                    </button>
+                </div>
+                
+                <div class="contenido-columna" id="contenido-datos-personales">
+                    <div class="campo-info">
+                        <img src="../src/Nombre.png" alt="Nombre" class="icono-campo">
+                        <div class="texto-campo">
+                            <p class="label-campo">Nombre completo</p>
+                            <p class="valor-campo" data-campo="nombre">Maria García</p>
+                            <input type="text" class="input-edicion" data-campo="nombre" value="Maria García" style="display: none;">
+                        </div>
+                    </div>
+                    
+                    <div class="campo-info">
+                        <img src="../src/RFC.png" alt="RFC" class="icono-campo">
+                        <div class="texto-campo">
+                            <p class="label-campo">RFC</p>
+                            <p class="valor-campo" data-campo="rfc">XXXX000000XX0</p>
+                            <input type="text" class="input-edicion" data-campo="rfc" value="XXXX000000XX0" style="display: none;">
+                        </div>
+                    </div>
+                    
+                    <div class="campo-info">
+                        <img src="../src/RFC.png" alt="CURP" class="icono-campo">
+                        <div class="texto-campo">
+                            <p class="label-campo">CURP</p>
+                            <p class="valor-campo" data-campo="curp">XXXX000XXXXXXX0</p>
+                            <input type="text" class="input-edicion" data-campo="curp" value="XXXX000XXXXXXX0" style="display: none;">
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="contenedor-botones" id="botones-datos-personales" style="display: none;">
+                    <button class="boton-cancelar" id="btn-cancelar-datos-personales">Cancelar</button>
+                    <button class="boton-guardar" id="btn-guardar-datos-personales">Guardar cambios</button>
+                </div>
+            </div>
+
+            <div class="columna-info">
+                <div class="encabezado-columna">
+                    <h3 class="titulo-columna">Información de Contacto</h3>
+                    <button class="boton-editar" id="btn-editar-informacion-contacto">
+                        <img src="../src/Editar.png" alt="Editar" class="icono-editar-btn">
+                    </button>
+                </div>
+                
+                <div class="contenido-columna" id="contenido-informacion-contacto">
+                    <div class="campo-info">
+                        <img src="../src/Telefono.png" alt="Teléfono" class="icono-campo">
+                        <div class="texto-campo">
+                            <p class="label-campo">Teléfono Principal</p>
+                            <p class="valor-campo" data-campo="telefono">+52 961 000 00 00</p>
+                            <input type="tel" class="input-edicion" data-campo="telefono" value="+52 961 000 00 00" style="display: none;">
+                        </div>
+                    </div>
+                    
+                    <div class="campo-info">
+                        <img src="../src/Nombre.png" alt="Email" class="icono-campo">
+                        <div class="texto-campo">
+                            <p class="label-campo">Correo Electrónico</p>
+                            <p class="valor-campo" data-campo="email">maria.garcia@contadores.mx</p>
+                            <input type="email" class="input-edicion" data-campo="email" value="maria.garcia@contadores.mx" style="display: none;">
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="contenedor-botones" id="botones-informacion-contacto" style="display: none;">
+                    <button class="boton-cancelar" id="btn-cancelar-informacion-contacto">Cancelar</button>
+                    <button class="boton-guardar" id="btn-guardar-informacion-contacto">Guardar cambios</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- Modal para ver foto en grande -->
+        <div id="modal-foto-grande" class="modal-foto-overlay">
+            <div class="modal-foto-contenido">
+                <button class="modal-foto-cerrar" id="cerrar-modal-foto">&times;</button>
+                <img src="foto-perfil.png" alt="Foto de perfil" class="modal-foto-imagen" id="modal-imagen-grande">
+            </div>
+        </div>
+
+        <!-- Modal de confirmación para cancelar edición -->
+        <div id="modal-confirmacion" class="modal-overlay">
+            <div class="modal-contenido">
+                <div class="modal-icono">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"></path>
+                        <line x1="12" y1="9" x2="12" y2="13"></line>
+                        <line x1="12" y1="17" x2="12.01" y2="17"></line>
+                    </svg>
+                </div>
+                <h3 class="modal-titulo">¿Estás seguro?</h3>
+                <p class="modal-mensaje">¿Estás seguro de que deseas cancelar? No se guardarán los datos.</p>
+                <div class="modal-botones">
+                    <button class="modal-btn-volver" id="btn-volver">Volver</button>
+                    <button class="modal-btn-cancelar" id="btn-confirmar-cancelar">Sí, cancelar</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Modal de confirmación para eliminar foto -->
+        <div id="modal-eliminar-foto" class="modal-overlay">
+            <div class="modal-contenido">
+                <div class="modal-icono icono-eliminar">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <polyline points="3 6 5 6 21 6"></polyline>
+                        <path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path>
+                        <line x1="10" y1="11" x2="10" y2="17"></line>
+                        <line x1="14" y1="11" x2="14" y2="17"></line>
+                    </svg>
+                </div>
+                <h3 class="modal-titulo">¿Eliminar foto de perfil?</h3>
+                <p class="modal-mensaje">Esta acción no se puede deshacer. Tu foto de perfil será eliminada permanentemente.</p>
+                <div class="modal-botones">
+                    <button class="modal-btn-volver" id="btn-cancelar-eliminar-foto">Cancelar</button>
+                    <button class="modal-btn-cancelar" id="btn-confirmar-eliminar-foto">Sí, eliminar</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Modal de logout -->
+        <div id="modal-logout" class="modal-overlay">
+            <div class="modal-contenido">
+                <div class="modal-icono icono-logout">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"></path>
+                        <line x1="12" y1="9" x2="12" y2="13"></line>
+                        <line x1="12" y1="17" x2="12.01" y2="17"></line>
+                    </svg>
+                </div>
+                <h3 class="modal-titulo">Cerrar Sesión</h3>
+                <p class="modal-mensaje">¿Estás seguro de que deseas salir de tu cuenta?</p>
+                <div class="modal-botones">
+                    <button class="modal-btn-volver" id="btn-logout-volver">Volver</button>
+                    <button class="modal-btn-cancelar" id="btn-logout-confirmar">Sí, salir</button>
+                </div>
+            </div>
+        </div>
+    </main>
+</body>
+</html>

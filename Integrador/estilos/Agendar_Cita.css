@@ -1,0 +1,1234 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+    background-color: #f0f2f5;
+    display: flex;
+    min-height: 100vh;
+    overflow-x: hidden;
+}
+
+/* ===== BOTÓN HAMBURGUESA ===== */
+.boton-hamburguesa {
+    position: fixed;
+    top: 15px;
+    left: 15px;
+    width: 45px;
+    height: 45px;
+    background-color: white;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    z-index: 1001;
+    display: none;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 5px;
+    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.15);
+    transition: all 0.3s ease;
+}
+
+.boton-hamburguesa:hover {
+    background-color: #f5f5f5;
+    transform: scale(1.05);
+}
+
+.linea-hamburguesa {
+    width: 24px;
+    height: 3px;
+    background-color: #0c5a73;
+    border-radius: 2px;
+    transition: all 0.3s ease;
+}
+
+.boton-hamburguesa.activo .linea-hamburguesa:nth-child(1) {
+    transform: translateY(8px) rotate(45deg);
+}
+
+.boton-hamburguesa.activo .linea-hamburguesa:nth-child(2) {
+    opacity: 0;
+}
+
+.boton-hamburguesa.activo .linea-hamburguesa:nth-child(3) {
+    transform: translateY(-8px) rotate(-45deg);
+}
+
+/* ===== OVERLAY MENU ===== */
+.overlay-menu {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 999;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease;
+}
+
+.overlay-menu.activo {
+    opacity: 1;
+    visibility: visible;
+}
+
+/* ===== MENÚ LATERAL ===== */
+.menu-lateral {
+    width: 260px;
+    background: #0a5c7a;
+    position: fixed;
+    height: 100vh;
+    padding: 0;
+    box-shadow: 2px 0 10px rgba(0, 0, 0, 0.15);
+    z-index: 1000;
+    transition: transform 0.3s ease;
+    display: flex;
+    flex-direction: column;
+}
+
+/* ===== LOGO Y NOMBRE EMPRESA ===== */
+.contenedor-logo {
+    padding: 25px 20px;
+    text-align: center;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.logo-empresa {
+    width: 80px;
+    height: 80px;
+    background-color: white;
+    border-radius: 50%;
+    margin: 0 auto 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.imagen-logo {
+    width: 50px;
+    height: auto;
+}
+
+.nombre-empresa {
+    color: white;
+    font-size: 16px;
+    font-weight: 700;
+    letter-spacing: 1px;
+}
+
+/* ===== NAVEGACIÓN ===== */
+.navegacion-menu {
+    display: flex;
+    flex-direction: column;
+    padding: 20px 0;
+    flex: 1;
+    overflow-y: auto;
+}
+
+.navegacion-menu::-webkit-scrollbar {
+    width: 6px;
+}
+
+.navegacion-menu::-webkit-scrollbar-track {
+    background: rgba(255, 255, 255, 0.05);
+}
+
+.navegacion-menu::-webkit-scrollbar-thumb {
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 3px;
+}
+
+.item-menu {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    padding: 12px 25px;
+    color: rgba(255, 255, 255, 0.9);
+    text-decoration: none;
+    font-size: 15px;
+    font-weight: 400;
+    transition: all 0.2s ease;
+}
+
+.item-menu:hover {
+    background-color: rgba(255, 255, 255, 0.08);
+    color: white;
+}
+
+.item-menu.activo {
+    background-color: rgba(255, 255, 255, 0.12);
+    color: white;
+    font-weight: 500;
+}
+
+.icono-menu {
+    width: 20px;
+    height: 20px;
+    stroke: rgba(255, 255, 255, 0.9);
+    flex-shrink: 0;
+}
+
+.item-menu:hover .icono-menu,
+.item-menu.activo .icono-menu {
+    stroke: white;
+}
+
+.texto-menu {
+    flex: 1;
+}
+
+/* ===== BOTÓN LOGOUT ===== */
+.item-logout {
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    margin-top: auto;
+    margin-bottom: 20px;
+}
+
+.item-logout:hover {
+    background-color: rgba(255, 255, 255, 0.1) !important;
+    color: white !important;
+}
+
+.item-logout:hover .icono-menu {
+    stroke: white !important;
+}
+
+/* ===== MODAL LOGOUT ===== */
+.modal-contenido-logout {
+    background-color: white;
+    border-radius: 16px;
+    padding: 35px;
+    max-width: 420px;
+    width: 90%;
+    text-align: center;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+    transform: scale(0.9);
+    transition: transform 0.3s ease;
+}
+
+.modal-overlay.activo .modal-contenido-logout {
+    transform: scale(1);
+}
+
+.modal-icono-logout {
+    width: 70px;
+    height: 70px;
+    margin: 0 auto 20px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(135deg, #ef4444 0%, #dc2626 100%);
+}
+
+.modal-icono-logout svg {
+    width: 35px;
+    height: 35px;
+    stroke: white;
+    stroke-width: 2.5;
+}
+
+.modal-titulo-logout {
+    font-size: 22px;
+    font-weight: 700;
+    color: #1a1a1a;
+    margin-bottom: 10px;
+}
+
+.modal-mensaje-logout {
+    font-size: 15px;
+    color: #666;
+    margin-bottom: 25px;
+    line-height: 1.5;
+}
+
+.modal-botones-logout {
+    display: flex;
+    gap: 12px;
+}
+
+.modal-btn-volver,
+.modal-btn-salir {
+    flex: 1;
+    padding: 12px 24px;
+    border: none;
+    border-radius: 8px;
+    font-size: 15px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.modal-btn-volver {
+    background-color: #f3f4f6;
+    color: #374151;
+}
+
+.modal-btn-volver:hover {
+    background-color: #e5e7eb;
+    transform: translateY(-2px);
+}
+
+.modal-btn-salir {
+    background: linear-gradient(135deg, #ef4444 0%, #dc2626 100%);
+    color: white;
+}
+
+.modal-btn-salir:hover {
+    background: linear-gradient(135deg, #dc2626 0%, #b91c1c 100%);
+    transform: translateY(-2px);
+}
+
+/* ===== CONTENIDO PRINCIPAL ===== */
+.contenido-principal {
+    margin-left: 260px;
+    flex: 1;
+    padding: 40px 60px;
+    max-width: calc(100% - 260px);
+    width: 100%;
+}
+
+.encabezado-cita {
+    margin-bottom: 30px;
+}
+
+.titulo-pagina {
+    font-size: 32px;
+    font-weight: 700;
+    color: #1a1a1a;
+    margin-bottom: 8px;
+}
+
+.subtitulo-pagina {
+    font-size: 15px;
+    color: #666;
+}
+
+/* ===== CONTENEDOR AGENDAR ===== */
+.contenedor-agendar {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 30px;
+}
+
+/* ===== CALENDARIO ===== */
+.seccion-calendario,
+.seccion-detalles {
+    background-color: white;
+    border-radius: 12px;
+    padding: 25px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+}
+
+.titulo-seccion {
+    font-size: 18px;
+    font-weight: 700;
+    color: #1a1a1a;
+    margin-bottom: 20px;
+}
+
+.calendario {
+    width: 100%;
+}
+
+.calendario-navegacion {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.btn-mes {
+    width: 35px;
+    height: 35px;
+    border: none;
+    background-color: #f3f4f6;
+    border-radius: 8px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+}
+
+.btn-mes:hover {
+    background-color: #e5e7eb;
+}
+
+.btn-mes svg {
+    width: 18px;
+    height: 18px;
+    stroke: #666;
+}
+
+.mes-anio {
+    font-size: 16px;
+    font-weight: 600;
+    color: #1a1a1a;
+}
+
+.calendario-dias-semana {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: 5px;
+    margin-bottom: 10px;
+}
+
+.dia-semana {
+    text-align: center;
+    font-size: 12px;
+    font-weight: 600;
+    color: #999;
+    padding: 8px 0;
+}
+
+.calendario-dias {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: 5px;
+}
+
+.dia {
+    aspect-ratio: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 14px;
+    color: #374151;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    font-weight: 500;
+}
+
+.dia:hover {
+    background-color: #f3f4f6;
+}
+
+.dia.otro-mes {
+    color: #d1d5db;
+    cursor: not-allowed;
+}
+
+.dia.hoy {
+    background-color: #5e9fdc;
+    color: white;
+}
+
+.dia.seleccionado {
+    background-color: #57cd2c;
+    color: white;
+}
+
+.dia.deshabilitado {
+    color: #d1d5db;
+    cursor: not-allowed;
+}
+
+/* ===== FORMULARIO ===== */
+.formulario-cita {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.campo-form {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.label-campo {
+    font-size: 14px;
+    font-weight: 600;
+    color: #374151;
+}
+
+.select-campo,
+.textarea-campo {
+    padding: 12px 15px;
+    border: 2px solid #e5e7eb;
+    border-radius: 8px;
+    font-size: 14px;
+    color: #1a1a1a;
+    font-family: inherit;
+    transition: all 0.3s ease;
+    background-color: white;
+}
+
+.select-campo:focus,
+.textarea-campo:focus {
+    outline: none;
+    border-color: #117a8b;
+    box-shadow: 0 0 0 3px rgba(17, 122, 139, 0.1);
+}
+
+.textarea-campo {
+    resize: vertical;
+    min-height: 100px;
+}
+
+.btn-agendar {
+    padding: 14px 24px;
+    background: linear-gradient(135deg, #117a8b 0%, #0e5d6b 100%);
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-size: 15px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.btn-agendar:hover {
+    background: linear-gradient(135deg, #0e5d6b 0%, #0a4f5c 100%);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(17, 122, 139, 0.3);
+}
+
+.btn-agendar:disabled {
+    background: #d1d5db;
+    cursor: not-allowed;
+    transform: none;
+}
+
+/* ===== ESTILOS PARA TOTAL A PAGAR ===== */
+.campo-total {
+    border-top: 1px solid #eee;
+    padding-top: 18px;
+    margin-top: 10px;
+}
+
+.precio-total {
+    font-size: 1.8rem;
+    font-weight: 700;
+    color: #117a8b;
+}
+
+/* ===== ESTILOS PARA SECCIÓN DE PAGO ===== */
+.seccion-pago {
+    border-top: 1px solid #eee;
+    padding-top: 18px;
+    margin-top: 10px;
+}
+
+.opciones-pago {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 12px;
+}
+
+.opciones-pago input[type="radio"] {
+    display: none;
+}
+
+.btn-pago {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 12px 15px;
+    border: 2px solid #ddd;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    background-color: #fff;
+    font-weight: 600;
+    color: #555;
+}
+
+.btn-pago:hover {
+    border-color: #bbb;
+    background-color: #f9f9f9;
+}
+
+.opciones-pago input[type="radio"]:checked + .btn-pago {
+    border-color: #117a8b;
+    background-color: #f0f7ff;
+    color: #117a8b;
+    box-shadow: 0 4px 10px rgba(17, 122, 139, 0.1);
+}
+
+.logo-pago {
+    height: 18px;
+    margin-right: 10px;
+    fill: currentColor;
+}
+
+/* ===== ESTILOS PARA MODALIDAD ===== */
+#seccion-modalidad {
+    border-top: 1px solid #eee;
+    padding-top: 18px;
+    margin-top: 10px;
+}
+
+#seccion-modalidad .opciones-pago {
+    grid-template-columns: repeat(2, 1fr);
+}
+
+.btn-modalidad .logo-pago {
+    height: 20px;
+    width: 20px;
+}
+
+/* ===== MODAL OVERLAY GENERAL ===== */
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.6);
+    backdrop-filter: blur(4px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 2000;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease;
+}
+/* Overlay del modal también debe permitir scroll */
+#modal-confirmar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: none;
+    align-items: flex-start !important; /* Cambiar de center a flex-start */
+    justify-content: center;
+    z-index: 1000;
+    padding: 20px 0; /* Agregar padding vertical */
+    overflow-y: auto !important;
+    -webkit-overflow-scrolling: touch;
+}
+
+#modal-confirmar.activo {
+    display: flex;
+}
+
+.modal-overlay.activo {
+    opacity: 1;
+    visibility: visible;
+}
+
+/* ===== MODAL CONFIRMACIÓN ===== */
+.modal-confirmar {
+    background-color: white;
+    border-radius: 12px;
+    padding: 40px 35px;
+    max-width: 600px;
+    width: 90%;
+    text-align: center;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+    transform: scale(0.9);
+    transition: transform 0.3s ease;
+}
+
+.modal-overlay.activo .modal-confirmar {
+    transform: scale(1);
+}
+
+.modal-titulo {
+    font-size: 28px;
+    font-weight: 700;
+    color: #0e5d6b;
+    margin-bottom: 15px;
+}
+
+.modal-texto {
+    font-size: 15px;
+    color: #6c757d;
+    margin-bottom: 0;
+    line-height: 1.5;
+}
+
+.contenido-modal {
+    background-color: #ffffff;
+    width: 90%;
+    max-width: 500px; /* Ancho máximo elegante */
+    padding: 30px;
+    border-radius: 16px;
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
+    transform: translateY(20px);
+    transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    text-align: center;
+}
+
+.modal-overlay.activo .contenido-modal {
+    transform: translateY(0);
+}
+
+.modal-titulo {
+    font-size: 1.5rem;
+    color: #0e5d6b; /* Tu color corporativo */
+    margin-bottom: 10px;
+    font-weight: 700;
+}
+
+.modal-texto {
+    color: #666;
+    margin-bottom: 20px;
+    font-size: 0.95rem;
+}
+
+#modal-resumen {
+    background-color: #f8fafc;
+    padding: 15px;
+    border-radius: 8px;
+    border: 1px solid #e2e8f0;
+    text-align: left;
+    margin-bottom: 20px;
+}
+
+#modal-resumen p {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 8px;
+    color: #475569;
+    font-size: 0.95rem;
+}
+
+#modal-resumen p strong {
+    color: #1e293b;
+    font-weight: 600;
+}
+
+#modal-resumen p:last-child {
+    margin-bottom: 0;
+}
+
+/* ===== CONTENEDOR PAYPAL ===== */
+#paypal-button-container {
+    width: 100%;
+    margin-top: 20px;
+    min-height: 150px; /* Evita saltos de altura mientras carga */
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+/* ===== BOTONES DEL MODAL ===== */
+.acciones-modal {
+    display: flex;
+    gap: 15px;
+    justify-content: center;
+    margin-top: 20px;
+}
+
+.btn-modal {
+    padding: 12px 24px;
+    border: none;
+    border-radius: 8px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    font-size: 1rem;
+    flex: 1;
+}
+
+.btn-cancelar {
+    background-color: #ffffff;
+    color: #a0a5ac;
+}
+
+.btn-cancelar:hover {
+    background-color: #cbd5e1;
+    color: #ffffff;
+}
+
+.btn-aceptar {
+    background-color: #0e5d6b;
+    color: white;
+}
+
+.btn-aceptar:hover {
+    background-color: #094652;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(14, 93, 107, 0.3);
+}
+
+/* Animación de carga para PayPal (Opcional) */
+#paypal-button-container:empty::before {
+    content: "Cargando pasarela segura...";
+    display: block;
+    text-align: center;
+    color: #94a3b8;
+    font-size: 0.9rem;
+    margin-bottom: 10px;
+}
+
+
+
+/* ===== BOTONES DEL MODAL ===== */
+.acciones-modal {
+    display: flex;
+    gap: 0;
+    justify-content: center;
+    margin-top: 20px;
+    flex-direction: column;
+}
+
+.modal-botones {
+    display: flex;
+    gap: 0;
+    flex-direction: column;
+}
+
+.btn-modal {
+    width: 100%;
+    padding: 14px 24px;
+    border: none;
+    border-radius: 8px;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    margin-bottom: 0;
+}
+
+.btn-cancelar {
+    background-color: #dc3545;
+    color: white;
+    margin-top: 15px;
+}
+
+.btn-cancelar:hover {
+    background-color: #bb2d3b;
+}
+
+.btn-aceptar {
+    background-color: #0e5d6b;
+    color: white;
+}
+
+.btn-aceptar:hover {
+    background-color: #094652;
+    transform: translateY(-1px);
+    box-shadow: 0 4px 12px rgba(14, 93, 107, 0.3);
+}
+
+/* ===== MODAL DOMINGO ===== */
+#modal-domingo,
+#modal-horario-pasado {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.6);
+    z-index: 10000;
+    justify-content: center;
+    align-items: center;
+    backdrop-filter: blur(3px);
+}
+
+#modal-domingo.activo,
+#modal-horario-pasado.activo {
+    display: flex;
+    animation: fadeIn 0.3s ease;
+}
+
+#modal-domingo .modal-contenido,
+#modal-horario-pasado .modal-contenido {
+    background: white;
+    padding: 35px 40px;
+    border-radius: 16px;
+    text-align: center;
+    max-width: 420px;
+    width: 90%;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+    animation: slideUp 0.3s ease;
+    position: relative;
+}
+
+#modal-domingo .modal-icon,
+#modal-horario-pasado .modal-icon {
+    width: 80px;
+    height: 80px;
+    margin: 0 auto 20px;
+    display: block;
+}
+
+#modal-domingo h3,
+#modal-horario-pasado h3 {
+    font-size: 1.6rem;
+    color: #2c3e50;
+    margin-bottom: 15px;
+    font-weight: 600;
+}
+
+#modal-domingo p,
+#modal-horario-pasado p {
+    font-size: 1rem;
+    color: #5a6c7d;
+    line-height: 1.6;
+    margin-bottom: 25px;
+}
+
+#modal-domingo .acciones,
+#modal-horario-pasado .acciones {
+    display: flex;
+    gap: 12px;
+    justify-content: center;
+    margin-top: 25px;
+}
+
+#modal-domingo .btn-volver,
+#modal-horario-pasado .btn-volver {
+    background-color: #0e5d6b;
+    color: white;
+    border: none;
+    padding: 12px 35px;
+    border-radius: 8px;
+    font-size: 1rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 10px rgba(14, 93, 107, 0.2);
+}
+
+#modal-domingo .btn-volver:hover,
+#modal-horario-pasado .btn-volver:hover {
+    background-color: #0a4a56;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 15px rgba(14, 93, 107, 0.3);
+}
+
+#modal-domingo .btn-volver:active,
+#modal-horario-pasado .btn-volver:active {
+    transform: translateY(0);
+}
+
+/* ===== NOTIFICACIÓN ===== */
+.notificacion {
+    position: fixed;
+    top: 20px;
+    right: -400px;
+    z-index: 3000;
+    transition: right 0.4s ease;
+}
+
+.notificacion.mostrar {
+    right: 20px;
+}
+/* CÍRCULO DEL ICONO */
+.modal-alerta-icono {
+    width: 90px;
+    height: 90px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, #cb0a0a, #cb0a0a);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0 auto 20px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.25);
+}
+
+/* ICONO DE ALERTA DENTRO DEL CÍRCULO */
+.icono-alerta {
+    font-size: 45px;
+    color: white;
+    font-weight: bold;
+    font-family: Arial, sans-serif;
+    margin-top: -2px;
+}
+
+/* RESPONSIVE PARA TELÉFONOS */
+@media (max-width: 480px) {
+    .modal-alerta-icono {
+        width: 70px;
+        height: 70px;
+    }
+    .icono-alerta {
+        font-size: 32px;
+    }
+}
+
+.notificacion-contenido {
+    background: linear-gradient(135deg, #117a8b 0%, #0e5d6b 100%);
+    color: white;
+    padding: 15px 20px;
+    border-radius: 12px;
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.25);
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    min-width: 350px;
+}
+
+.notificacion-icono {
+    width: 28px;
+    height: 28px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.notificacion-icono svg {
+    width: 24px;
+    height: 24px;
+    stroke: white;
+}
+
+.notificacion-texto {
+    flex: 1;
+    font-size: 14px;
+    font-weight: 500;
+}
+
+.notificacion-cerrar {
+    width: 28px;
+    height: 28px;
+    border: none;
+    background-color: rgba(255, 255, 255, 0.2);
+    border-radius: 6px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background-color 0.3s ease;
+}
+
+.notificacion-cerrar:hover {
+    background-color: rgba(255, 255, 255, 0.3);
+}
+
+.notificacion-cerrar svg {
+    width: 16px;
+    height: 16px;
+    stroke: white;
+}
+
+/* ===== ANIMACIONES ===== */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes slideUp {
+    from {
+        transform: translateY(50px);
+        opacity: 0;
+    }
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+/* ===== RESPONSIVE ===== */
+@media (min-width: 768px) {
+    .seccion-pago .opciones-pago {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+@media (max-width: 1024px) {
+    .contenedor-agendar {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 768px) {
+    .boton-hamburguesa {
+        display: flex;
+    }
+    
+    .menu-lateral {
+        transform: translateX(-100%);
+    }
+    
+    .menu-lateral.abierto {
+        transform: translateX(0);
+    }
+    
+    .contenido-principal {
+        margin-left: 0;
+        max-width: 100%;
+        padding: 80px 20px 20px 20px;
+    }
+    
+    .titulo-pagina {
+        font-size: 26px;
+    }
+    
+    .notificacion-contenido {
+        min-width: 300px;
+    }
+    
+    .seccion-pago .opciones-pago {
+        grid-template-columns: 1fr;
+    }
+    
+    .modal-contenido-logout {
+        padding: 25px 20px;
+        max-width: 90%;
+    }
+    
+    .modal-icono-logout {
+        width: 60px;
+        height: 60px;
+    }
+    
+    .modal-icono-logout svg {
+        width: 30px;
+        height: 30px;
+    }
+    
+    .modal-titulo-logout {
+        font-size: 20px;
+    }
+    
+    .modal-mensaje-logout {
+        font-size: 14px;
+    }
+    
+    .modal-botones-logout {
+        flex-direction: column;
+    }
+    
+    .modal-btn-volver,
+    .modal-btn-salir {
+        width: 100%;
+    }
+}
+
+@media (max-width: 480px) {
+    .contenido-principal {
+        padding: 70px 15px 15px 15px;
+    }
+    
+    .titulo-pagina {
+        font-size: 22px;
+    }
+    
+    .seccion-calendario,
+    .seccion-detalles {
+        padding: 20px 15px;
+    }
+    
+    .notificacion {
+        left: -110%;
+        right: auto;
+        transition: left 0.4s ease;
+        width: calc(100% - 30px);
+        margin: 0 15px;
+    }
+    
+    .notificacion.mostrar {
+        left: 0;
+    }
+    
+    .notificacion-contenido {
+        min-width: auto;
+        width: 100%;
+    }
+    
+    #seccion-modalidad .opciones-pago {
+        grid-template-columns: 1fr;
+    }
+    
+    .modal-confirmar {
+        padding: 25px 20px;
+        max-width: 95%;
+    }
+    
+    .modal-icono {
+        width: 60px;
+        height: 60px;
+    }
+    
+    .modal-icono svg {
+        width: 30px;
+        height: 30px;
+    }
+    
+    .modal-titulo {
+        font-size: 20px;
+    }
+    
+    .modal-texto {
+        font-size: 14px;
+    }
+    
+    .modal-botones {
+        flex-direction: column;
+    }
+    
+    .btn-modal {
+        width: 100%;
+    }
+    
+    .modal-contenido-logout {
+        padding: 20px 15px;
+        max-width: 95%;
+    }
+    
+    .modal-icono-logout {
+        width: 50px;
+        height: 50px;
+        margin-bottom: 15px;
+    }
+    
+    .modal-icono-logout svg {
+        width: 25px;
+        height: 25px;
+    }
+    
+    .modal-titulo-logout {
+        font-size: 18px;
+        margin-bottom: 8px;
+    }
+    
+    .modal-mensaje-logout {
+        font-size: 13px;
+        margin-bottom: 20px;
+    }
+    
+    .modal-btn-volver,
+    .modal-btn-salir {
+        padding: 10px 16px;
+        font-size: 13px;
+    }
+    
+    #modal-domingo .modal-contenido,
+    #modal-horario-pasado .modal-contenido {
+        padding: 30px 25px;
+        max-width: 95%;
+    }
+    
+    #modal-domingo .modal-icon,
+    #modal-horario-pasado .modal-icon {
+        width: 65px;
+        height: 65px;
+    }
+    
+    #modal-domingo h3,
+    #modal-horario-pasado h3 {
+        font-size: 1.4rem;
+    }
+    
+    #modal-domingo p,
+    #modal-horario-pasado p {
+        font-size: 0.95rem;
+    }
+    
+    #modal-domingo .btn-volver,
+    #modal-horario-pasado .btn-volver {
+        padding: 11px 28px;
+        font-size: 0.95rem;
+    }
+}

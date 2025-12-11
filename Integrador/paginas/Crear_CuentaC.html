@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Crear Cuenta</title>
+    <link rel="stylesheet" href="../estilos/Crear_CuentaC.css">
+    <script src="../js/Crear_Cuenta.js" defer></script>
+    <script src="../js/service.js"></script>
+</head>
+<body>
+    <div class="contenedor">
+        <div class="panel-izquierdo">
+            <div class="circulo-perfil">
+                <img src="../src/Logo.png" alt="Perfil">
+            </div>
+        </div>
+        
+        <div class="panel-derecho">
+            <h1>Crear cuenta</h1>    
+            <form class="formulario-registro" id="form-registro" novalidate>
+                <div class="grupo-campo">
+                    <label for="email">Email</label>
+                    <input 
+                        type="email" 
+                        id="email" 
+                        name="email"
+                        placeholder="Ingresa tu correo electrónico"
+                        required
+                        aria-describedby="email-error"
+                    >
+                    <span id="email-error" class="mensaje-error-campo" role="alert"></span>
+                </div>
+                
+                <div class="grupo-campo">
+                    <label for="nombre">Nombre</label>
+                    <input 
+                        type="text" 
+                        id="nombre" 
+                        name="nombre"
+                        placeholder="Ingresa tu nombre completo"
+                        required
+                        aria-describedby="nombre-error"
+                    >
+                    <span id="nombre-error" class="mensaje-error-campo" role="alert"></span>
+                </div>
+                
+                <div class="grupo-campo">
+                    <label for="contraseña">Contraseña</label>
+                    <div class="contenedor-contraseña">
+                        <input 
+                            type="password" 
+                            id="contraseña" 
+                            name="contraseña"
+                            placeholder="Crea tu contraseña (12 caracteres)"
+                            required
+                            maxlength="12"
+                            aria-describedby="contraseña-error"
+                        >
+                        <!-- BOTÓN MODIFICADO: ID añadido y onclick quitado -->
+                        <button type="button" class="boton-mostrar" id="btn-toggle-pass1">
+                            <svg id="icono-ojo" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path>
+                                <circle cx="12" cy="12" r="3"></circle>
+                            </svg>
+                        </button>
+                    </div>
+                    <span id="contraseña-error" class="mensaje-error-campo" role="alert"></span>
+                </div>
+                
+                <!-- Confirmar contraseña -->
+                <div class="grupo-campo">
+                    <label for="confirmar-contraseña">Confirmar contraseña</label>
+                    <div class="contenedor-contraseña">
+                        <input 
+                            type="password" 
+                            id="confirmar-contraseña" 
+                            name="confirmar_contraseña"
+                            placeholder="Confirma tu contraseña (12 caracteres)"
+                            required
+                            maxlength="12"
+                            aria-describedby="confirmar-contraseña-error"
+                        >
+                        <!-- BOTÓN MODIFICADO: ID añadido y onclick quitado -->
+                        <button type="button" class="boton-mostrar" id="btn-toggle-pass2">
+                            <svg id="icono-ojo-confirmar" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path>
+                                <circle cx="12" cy="12" r="3"></circle>
+                            </svg>
+                        </button>
+                    </div>
+                    <span id="confirmar-contraseña-error" class="mensaje-error-campo" role="alert"></span>
+                </div>
+
+                <!-- Checkbox de aceptación de políticas -->
+                <div class="grupo-campo-checkbox">
+                    <label class="checkbox-container">
+                        <input type="checkbox" id="aceptar-politicas" name="politicas" required>
+                        <span class="checkmark"></span>
+                        <span class="texto-checkbox">
+                            Acepto las 
+                            <a href="#" id="link-politicas" class="link-politica">Políticas de Privacidad</a> 
+                            y los 
+                            <a href="#" id="link-terminos" class="link-politica">Términos y Condiciones</a>
+                        </span>
+                    </label>
+                    <span id="politicas-error" class="mensaje-error-campo" role="alert"></span>
+                </div>
+                
+                <button type="submit" class="boton-enviar">Registrarse</button>
+            </form>
+            
+            <p class="texto-inicio">
+                ¿Ya tienes cuenta? <a href="../paginas/Sesion_Cliente.html" class="enlace-inicio">Inicia sesión aquí</a>
+            </p>
+        </div>
+    </div>
+
+    <!-- ================================================ -->
+    <!-- MODAL DE POLÍTICAS DE PRIVACIDAD Y TÉRMINOS -->
+    <!-- ================================================ -->
+    <div class="modal-politicas" id="modal-politicas">
+        <div class="modal-contenido">
+            <div class="modal-header">
+                <h2 id="modal-titulo">Política de Privacidad</h2>
+                <button class="modal-cerrar" id="btn-cerrar-modal">&times;</button>
+            </div>
+            
+            <div class="modal-body" id="modal-body">
+                <!-- El contenido se cargará dinámicamente con JavaScript -->
+            </div>
+            
+            <div class="modal-footer">
+                <button class="btn-modal-cerrar" id="btn-footer-cerrar">Cerrar</button>
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>

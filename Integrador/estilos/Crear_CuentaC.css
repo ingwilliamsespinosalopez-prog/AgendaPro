@@ -1,0 +1,692 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+    background-color: #f5f5f5;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px 0;
+}
+
+.contenedor {
+    display: flex;
+    width: 900px;
+    min-height: 650px;
+    background-color: white;
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+}
+
+.panel-izquierdo {
+    flex: 1;
+    background: linear-gradient(135deg, #0a5c7a 0%, #1a8caa 100%);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 40px;
+}
+
+.circulo-perfil {
+    width: 280px;
+    height: 280px;
+    border-radius: 50%;
+    overflow: hidden;
+    background-color: #f5a623;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
+}
+
+.circulo-perfil img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.panel-derecho {
+    flex: 1;
+    padding: 40px 50px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    overflow-y: auto;
+}
+
+h1 {
+    font-size: 32px;
+    font-weight: 600;
+    margin-bottom: 25px;
+    text-align: center;
+    color: #1a1a1a;
+}
+
+/* ===== BOTÓN DE GOOGLE ===== */
+.btn-google {
+    width: 100%;
+    padding: 14px 20px;
+    background-color: white;
+    border: 2px solid #dadce0;
+    border-radius: 8px;
+    font-size: 15px;
+    font-weight: 600;
+    color: #3c4043;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    transition: all 0.3s ease;
+    margin-bottom: 20px;
+}
+
+.btn-google:hover {
+    background-color: #f8f9fa;
+    border-color: #b8bdc3;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.btn-google:active {
+    background-color: #f1f3f4;
+}
+
+.google-icon {
+    width: 20px;
+    height: 20px;
+    flex-shrink: 0;
+}
+
+/* ===== SEPARADOR ===== */
+.separador {
+    display: flex;
+    align-items: center;
+    margin: 20px 0;
+    gap: 15px;
+}
+
+.linea {
+    flex: 1;
+    height: 1px;
+    background-color: #e0e0e0;
+}
+
+.texto-separador {
+    color: #999;
+    font-size: 14px;
+    font-weight: 500;
+}
+
+.formulario-registro {
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+}
+
+.grupo-campo {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+label {
+    font-size: 14px;
+    font-weight: 500;
+    color: #333;
+}
+
+input {
+    width: 100%;
+    padding: 14px 18px;
+    border: 1px solid #d1d1d1;
+    border-radius: 8px;
+    font-size: 15px;
+    transition: all 0.3s ease;
+    outline: none;
+}
+
+input::placeholder {
+    color: #999;
+}
+
+.contenedor-contraseña {
+    position: relative;
+    width: 100%;
+}
+
+.contenedor-contraseña input {
+    padding-right: 45px;
+}
+
+.boton-mostrar {
+    position: absolute;
+    right: 12px;
+    top: 50%;
+    transform: translateY(-50%);
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: #666;
+    padding: 5px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: color 0.3s ease;
+}
+
+.boton-mostrar:hover {
+    color: #5b5fc7;
+}
+
+.boton-mostrar svg {
+    width: 20px;
+    height: 20px;
+}
+
+input:focus {
+    border-color: #5b5fc7;
+    box-shadow: 0 0 0 3px rgba(91, 95, 199, 0.1);
+}
+
+input.error {
+    border-color: #ef4444;
+}
+
+input.error:focus {
+    border-color: #ef4444;
+    box-shadow: 0 0 0 3px rgba(239, 68, 68, 0.1);
+}
+
+/* ===== CHECKBOX DE POLÍTICAS ===== */
+.grupo-campo-checkbox {
+    margin: 10px 0;
+}
+
+.checkbox-container {
+    display: flex;
+    align-items: flex-start;
+    cursor: pointer;
+    user-select: none;
+    gap: 12px;
+    position: relative;
+}
+
+.checkbox-container input[type="checkbox"] {
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+    height: 0;
+    width: 0;
+}
+
+.checkmark {
+    position: relative;
+    height: 20px;
+    width: 20px;
+    min-width: 20px;
+    background-color: #fff;
+    border: 2px solid #d1d1d1;
+    border-radius: 4px;
+    transition: all 0.3s ease;
+    margin-top: 2px;
+}
+
+.checkbox-container:hover .checkmark {
+    border-color: #5b5fc7;
+}
+
+.checkbox-container input[type="checkbox"]:checked ~ .checkmark {
+    background-color: #5b5fc7;
+    border-color: #5b5fc7;
+}
+
+.checkmark:after {
+    content: "";
+    position: absolute;
+    display: none;
+}
+
+.checkbox-container input[type="checkbox"]:checked ~ .checkmark:after {
+    display: block;
+}
+
+.checkbox-container .checkmark:after {
+    left: 6px;
+    top: 2px;
+    width: 5px;
+    height: 10px;
+    border: solid white;
+    border-width: 0 2px 2px 0;
+    transform: rotate(45deg);
+}
+
+.texto-checkbox {
+    font-size: 13px;
+    line-height: 1.5;
+    color: #666;
+}
+
+.link-politica {
+    color: #5b5fc7;
+    text-decoration: none;
+    font-weight: 600;
+    transition: color 0.3s ease;
+}
+
+.link-politica:hover {
+    color: #7275e2;
+    text-decoration: underline;
+}
+
+/* ===== MODAL DE POLÍTICAS ===== */
+.modal-politicas {
+    display: none;
+    position: fixed;
+    z-index: 10000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.6);
+    backdrop-filter: blur(3px);
+    animation: fadeIn 0.3s ease;
+}
+
+.modal-politicas.mostrar {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+}
+
+.modal-contenido {
+    background-color: white;
+    border-radius: 12px;
+    width: 100%;
+    max-width: 800px;
+    max-height: 85vh;
+    display: flex;
+    flex-direction: column;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+    animation: slideUp 0.3s ease;
+}
+
+.modal-header {
+    padding: 25px 30px;
+    border-bottom: 1px solid #e2e8f0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-shrink: 0;
+}
+
+.modal-header h2 {
+    font-size: 24px;
+    font-weight: 700;
+    color: #1a202c;
+    margin: 0;
+}
+
+.modal-cerrar {
+    background: none;
+    border: none;
+    font-size: 32px;
+    color: #718096;
+    cursor: pointer;
+    padding: 0;
+    width: 32px;
+    height: 32px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 4px;
+    transition: all 0.3s ease;
+}
+
+.modal-cerrar:hover {
+    background-color: #f7fafc;
+    color: #2d3748;
+}
+
+.modal-body {
+    padding: 30px;
+    overflow-y: auto;
+    flex: 1;
+    font-size: 15px;
+    line-height: 1.8;
+    color: #4a5568;
+}
+
+.modal-body h3 {
+    font-size: 20px;
+    font-weight: 600;
+    color: #2d3748;
+    margin-top: 25px;
+    margin-bottom: 12px;
+}
+
+.modal-body h4 {
+    font-size: 16px;
+    font-weight: 600;
+    color: #4a5568;
+    margin-top: 20px;
+    margin-bottom: 10px;
+}
+
+.modal-body p {
+    margin-bottom: 15px;
+}
+
+.modal-body ul,
+.modal-body ol {
+    margin-left: 25px;
+    margin-bottom: 15px;
+}
+
+.modal-body li {
+    margin-bottom: 8px;
+}
+
+.modal-footer {
+    padding: 20px 30px;
+    border-top: 1px solid #e2e8f0;
+    display: flex;
+    justify-content: flex-end;
+    flex-shrink: 0;
+}
+
+.btn-modal-cerrar {
+    padding: 10px 24px;
+    background-color: #5b5fc7;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.btn-modal-cerrar:hover {
+    background-color: #7275e2;
+    transform: translateY(-1px);
+    box-shadow: 0 4px 12px rgba(91, 95, 199, 0.3);
+}
+
+/* Animaciones */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes slideUp {
+    from {
+        transform: translateY(50px);
+        opacity: 0;
+    }
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+/* ===== BOTÓN ENVIAR ===== */
+.boton-enviar {
+    margin-top: 10px;
+    padding: 14px;
+    background: linear-gradient(135deg, #5b5fc7 0%, #7275e2 100%);
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.boton-enviar:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(91, 95, 199, 0.3);
+}
+
+.boton-enviar:active {
+    transform: translateY(0);
+}
+
+.boton-enviar:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+    transform: none;
+}
+
+.texto-inicio {
+    margin-top: 20px;
+    text-align: center;
+    font-size: 14px;
+    color: #666;
+}
+
+.enlace-inicio {
+    color: #5b5fc7;
+    text-decoration: none;
+    font-weight: 600;
+    transition: color 0.3s ease;
+}
+
+.enlace-inicio:hover {
+    color: #7275e2;
+    text-decoration: underline;
+}
+
+/* ===== RESPONSIVE TABLET ===== */
+@media (max-width: 1024px) {
+    .contenedor {
+        width: 90%;
+        max-width: 800px;
+    }
+
+    .panel-derecho {
+        padding: 35px 40px;
+    }
+
+    h1 {
+        font-size: 28px;
+    }
+
+    .modal-contenido {
+        max-width: 700px;
+    }
+}
+
+/* ===== RESPONSIVE MÓVIL ===== */
+@media (max-width: 768px) {
+    body {
+        padding: 15px;
+        align-items: flex-start;
+    }
+
+    .contenedor {
+        flex-direction: column;
+        width: 100%;
+        max-width: 100%;
+        min-height: auto;
+        margin: 10px 0;
+    }
+    
+    .panel-izquierdo {
+        padding: 40px 20px;
+        min-height: 250px;
+    }
+    
+    .circulo-perfil {
+        width: 200px;
+        height: 200px;
+    }
+    
+    .panel-derecho {
+        padding: 35px 25px;
+    }
+
+    h1 {
+        font-size: 26px;
+        margin-bottom: 20px;
+    }
+
+    .texto-checkbox {
+        font-size: 12px;
+    }
+
+    .modal-politicas.mostrar {
+        padding: 10px;
+    }
+
+    .modal-contenido {
+        max-height: 90vh;
+        max-width: 100%;
+    }
+
+    .modal-header {
+        padding: 20px;
+    }
+
+    .modal-header h2 {
+        font-size: 20px;
+    }
+
+    .modal-body {
+        padding: 20px;
+        font-size: 14px;
+    }
+
+    .modal-body h3 {
+        font-size: 18px;
+    }
+
+    .modal-footer {
+        padding: 15px 20px;
+    }
+}
+
+/* ===== RESPONSIVE MÓVIL PEQUEÑO ===== */
+@media (max-width: 480px) {
+    body {
+        padding: 10px;
+    }
+
+    .contenedor {
+        border-radius: 15px;
+        margin: 5px 0;
+    }
+
+    .panel-izquierdo {
+        padding: 30px 15px;
+        min-height: 220px;
+    }
+
+    .circulo-perfil {
+        width: 170px;
+        height: 170px;
+    }
+    
+    .panel-derecho {
+        padding: 30px 20px;
+    }
+    
+    h1 {
+        font-size: 24px;
+        margin-bottom: 18px;
+    }
+
+    .checkmark {
+        height: 18px;
+        width: 18px;
+        min-width: 18px;
+    }
+
+    .texto-checkbox {
+        font-size: 11px;
+    }
+
+    .modal-header {
+        padding: 15px;
+    }
+
+    .modal-header h2 {
+        font-size: 18px;
+    }
+
+    .modal-body {
+        padding: 15px;
+        font-size: 13px;
+    }
+
+    .modal-body h3 {
+        font-size: 16px;
+    }
+
+    .modal-footer {
+        padding: 12px 15px;
+    }
+}
+
+/* Smooth scroll en modal */
+.modal-body {
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: thin;
+    scrollbar-color: #cbd5e0 #f7fafc;
+}
+
+.modal-body::-webkit-scrollbar {
+    width: 8px;
+}
+
+.modal-body::-webkit-scrollbar-track {
+    background: #f7fafc;
+}
+
+.modal-body::-webkit-scrollbar-thumb {
+    background-color: #cbd5e0;
+    border-radius: 4px;
+}
+
+.modal-body::-webkit-scrollbar-thumb:hover {
+    background-color: #a0aec0;
+}
+
+/* --- ESTILOS PARA MENSAJES DE ERROR Y CONTADOR (AÑADIDO) --- */
+
+/* Estilo base para el mensaje de error/ayuda (clase de tu HTML) */
+.mensaje-error-campo {
+    display: none; /* Oculto por defecto */
+    font-size: 12px;
+    color: #ef4444; /* Color de error estándar */
+    margin-top: 5px;
+}
+
+/* 1. Hace que el span de ayuda sea visible (para el contador) */
+.mensaje-error-campo.mensaje-ayuda {
+  display: block;
+  color: #666; /* Un color de ayuda neutral */
+}
+
+/* 2. Clase 'show' (para errores de validación) lo pone en rojo */
+.mensaje-error-campo.show {
+  display: block;
+  color: #ef4444; /* Color de error */
+}
+
+/* 3. Nueva clase 'valid' para cuando la longitud/coincidencia es correcta */
+.mensaje-error-campo.valid {
+  display: block;
+  color: #28a745; /* Color verde de éxito */
+}
